@@ -9,6 +9,8 @@ from django.contrib.auth.hashers import check_password
 # Create your views here.
 WEB_PATH = '/user'
 
+CATEGORIAS = ["Estudante", "Funcionario","Outro"]
+
 #redirect to login
 def redirect_login(request):
     return redirect(WEB_PATH+'/login')
@@ -23,7 +25,7 @@ def logOut(request):
 class register(View):
     def get(self, request, *args, **kwargs):
         error_message = request.GET.get('error')
-        return render(request,'register.html',{"error":error_message})
+        return render(request,'register.html',{"error":error_message,"cats":CATEGORIAS})
     def post(self, request, *args, **kwargs):
         username = request.POST['username']
         password = request.POST['password']

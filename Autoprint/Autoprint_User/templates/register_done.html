@@ -1,10 +1,10 @@
 
 {% extends 'base.html' %}
 
-{% block title%}AAEE WARS - Sign up SucessFull{% endblock %}
+{% block title%}Cadastrado com sucesso{% endblock %}
 
 {% block content%}
-    <h4 class="card-title mt-3 text-center">Utilizador Cadastrado Com Sucesso</h4>
-    <p class="text-center">Clica em <a href="{% url 'login' %}">login</a> para entrar
-    </p>
+    <div class="card-body p-5">
+        <h4 class="text-dark mb-5"><p class="text-center">Cadastrado com sucesso. Clica em <a href="{% url 'login' %}">login</a> para entrar</h4>
+    </div>
 {% endblock%}

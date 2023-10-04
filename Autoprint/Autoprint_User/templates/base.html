@@ -1,52 +1,65 @@
 {% load static %}
-<!---->
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
    <head>
       <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
       <meta charset="utf-8">
       <meta http-equiv="x-ua-compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="description" content="">
-      <meta name="keyword" content="">
-      <meta name="author"  content=""/>
+
       <!-- Page Title -->
       <title>{% block title%}{% endblock%} </title>
       <!-- Main CSS -->			
-      <link type="text/css" rel="stylesheet" href="{% static 'assets1\plugins\bootstrap\css\bootstrap.min.css'%}"/>
-      <link type="text/css" rel="stylesheet" href="{% static 'assets1\plugins\font-awesome\css\font-awesome.min.css'%}"/>
-      <link type="text/css" rel="stylesheet" href="{% static 'assets1\plugins\simple-line-icons\css\simple-line-icons.css'%}">
-      <link type="text/css" rel="stylesheet" href="{% static 'assets1\plugins\ionicons\css\ionicons.css'%}">
-      <link type="text/css" rel="stylesheet" href="{% static 'assets1\css\app.min.css'%}"/>
-      <link type="text/css" rel="stylesheet" href="{% static 'assets1\css\style.min.css'%}"/>
-      <link type="text/css" rel="stylesheet" href="{% static 'assets1\plugins\flag-icon\flag-icon.min.css'%}"/>
+      <link type="text/css" rel="stylesheet" href="{% static 'assets\css\materialdesignicons.min.css'%}"/>
+      <link type="text/css" rel="stylesheet" href="{% static 'assets\css\sleek.css'%}"/>
       <!-- Favicon -->	
-      <link rel="icon" href="{% static 'assets/images/aaee.png'%}" type="image/x-icon">
+      <link rel="icon" href="{% static 'assets/img/aaee.png'%}" type="image/x-icon">
+      <script href="{% static 'assets\plugins\nprogress\nprogress.js'%}"></script>
    </head>
    <body>
       <!--================================-->
       <!-- User Singin Start -->
       <!--================================-->			
-      <div class="ht-100v d-flex">
-         <div class="card shadow-none pd-20 mx-auto wd-300 text-center bd-1 align-self-center">
-           
-                
-            {% block content %}
-            
-            {% endblock%}
-            
+      <div class="container d-flex align-items-center justify-content-center vh-100">
+         <div class="row justify-content-center">
+           <div class="col-lg-6 col-md-10">
+             <div class="card">
+               <div class="card-header bg-primary">
+                 <div class="app-brand">
+                   <a href="/index.html">
+                     <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" width="30" height="33"
+                       viewBox="0 0 30 33">
+                       <g fill="none" fill-rule="evenodd">
+                         <path class="logo-fill-blue" fill="#7DBCFF" d="M0 4v25l8 4V0zM22 4v25l8 4V0z" />
+                         <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
+                       </g>
+                     </svg>
+   
+                     <span class="brand-name">Autoprint</span>
+                   </a>
+                 </div>
+               </div>
+                  {% block content %}
+                     
+                  {% endblock%}
+              </div>
+            </div>
          </div>
+           
+          
+            
+     
       </div>
-      <!--/ User Singin End -->
-      <!--================================-->
       <!-- Footer Script -->
       <!--================================-->	
-      <script src="{% static 'assets1/plugins/jquery/jquery.min.js'%}"></script>
-      <script src="{% static 'assets1/plugins/jquery-ui/jquery-ui.js'%}"></script>
-      <script src="{% static 'assets1/plugins/popper/popper.js'%}"></script>
-      <script src="{% static 'assets1/plugins/bootstrap/js/bootstrap.min.js'%}"></script>
-      <script src="{% static 'assets1/plugins/pace/pace.min.js'%}"></script>
-      <script src="{% static 'assets1/js/jquery.slimscroll.min.js'%}"></script>
-      <script src="{% static 'assets1/js/custom.js'%}"></script>
+      <script src="{% static 'assets/plugins/jquery/jquery.min.js'%}"></script>
+      <script src="{% static 'assets/plugins/jquery/jquery.min.js'%}"></script>
+      <script src="{% static 'assets/plugins/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+      <script src="{% static 'assets/js/sleek.js'%}"></script>
+      <!--<link href="{% static 'assets/options/optionswitch.css'%}" rel="stylesheet">
+      <script src="{% static 'assets/options/optionswitcher.js'%}"></script>-->
+
+
    </body>
 </html>

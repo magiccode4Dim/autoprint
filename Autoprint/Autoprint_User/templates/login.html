@@ -1,32 +1,40 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title%}AAEE WARS - Login{% endblock %}
+{% block title%}Login{% endblock %}
 
 {% block content%}
-   <a class="logo-img" href="/web">		
-      <img class="desktop-logo" width="200" height="200" src="{% static 'assets/images/Logo.png'%}" alt="">
-      <!--<img class="small-logo" src="{% static 'assets/images/Logo.png'%}" alt="">-->
-      </a>
-   <h4 class="card-title mt-3 text-center">Sing In</h4>
-   <p class="text-center">REPLICAÇÃO DE APLICAÇÕES WEB DA AAEE</p>
+   <div class="card-body p-5">
+      <h4 class="text-dark mb-5">Entrar</h4>
+      
+      <form action="{% url 'login' %}" method="POST"> {% csrf_token %}
+        <div class="row">
+          <div class="form-group col-md-12 mb-4">
+            <input type="text" class="form-control input-lg" id="username" name="username" aria-describedby="emailHelp" placeholder="Username">
+          </div>
 
-   <form action="{% url 'login' %}" method="POST"> {% csrf_token %}
-   <div class="form-group input-group">
-      <div class="input-group-prepend">
-         <span class="input-group-text pd-x-9"> <i class="fa fa-user-circle"></i> </span>
-      </div>
-      <input class="form-control form-control-sm" id="id_username" name="username" placeholder="Username" type="text">
-   </div>
-   <div class="form-group input-group">
-      <div class="input-group-prepend">
-         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-      </div>
-      <input class="form-control form-control-sm" name="password" id="id_password" placeholder="Create password" type="password">
-   </div>
-   <p class="text-center"><a href="{% url 'password_reset' %}">Forget Password?</a></p>
-   <div class="form-group">
-      <button type="submit" class="btn btn-custom-primary btn-block tx-13 hover-white"> Login </button>
-   </div>
-   <p class="text-center">Don't have an account?<br/> <a href="{% url 'register' %}">Create Account</a> </p>
-   </form>
+          <div class="form-group col-md-12 ">
+            <input type="password" class="form-control input-lg" name="password" id="password" placeholder="Password">
+          </div>
+
+          <div class="col-md-12">
+            <div class="d-flex my-2 justify-content-between">
+              <div class="d-inline-block mr-3">
+                <label class="control control-checkbox">Lembre-se de mim
+                  <input type="checkbox" />
+                  <div class="control-indicator"></div>
+                </label>
+              </div>
+
+              <p><a class="text-blue" href="{% url 'password_reset' %}">Esqueceu a senha?</a></p>
+            </div>
+
+            <input type="submit" class="btn btn-lg btn-primary btn-block mb-4" value="Entrar">
+
+            <p>Ainda não tem uma conta?
+              <a class="text-blue" href="{% url 'register' %}">Cadastrar-se</a>
+            </p>
+          </div>
+        </div>
+      </form>
+    </div>
 {% endblock%}
