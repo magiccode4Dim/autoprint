@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title%}AAEE WARS - Login{% endblock %}
+
+{% block content%}
+   <a class="logo-img" href="/web">		
+      <img class="desktop-logo" width="200" height="200" src="{% static 'assets/images/Logo.png'%}" alt="">
+      <!--<img class="small-logo" src="{% static 'assets/images/Logo.png'%}" alt="">-->
+      </a>
+   <h4 class="card-title mt-3 text-center">Sing In</h4>
+   <p class="text-center">REPLICAÇÃO DE APLICAÇÕES WEB DA AAEE</p>
+
+   <form action="{% url 'login' %}" method="POST"> {% csrf_token %}
+   <div class="form-group input-group">
+      <div class="input-group-prepend">
+         <span class="input-group-text pd-x-9"> <i class="fa fa-user-circle"></i> </span>
+      </div>
+      <input class="form-control form-control-sm" id="id_username" name="username" placeholder="Username" type="text">
+   </div>
+   <div class="form-group input-group">
+      <div class="input-group-prepend">
+         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+      </div>
+      <input class="form-control form-control-sm" name="password" id="id_password" placeholder="Create password" type="password">
+   </div>
+   <p class="text-center"><a href="{% url 'password_reset' %}">Forget Password?</a></p>
+   <div class="form-group">
+      <button type="submit" class="btn btn-custom-primary btn-block tx-13 hover-white"> Login </button>
+   </div>
+   <p class="text-center">Don't have an account?<br/> <a href="{% url 'register' %}">Create Account</a> </p>
+   </form>
+{% endblock%}

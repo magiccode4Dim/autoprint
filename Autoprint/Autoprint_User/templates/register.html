@@ -1,0 +1,57 @@
+
+{% extends 'base.html' %}
+
+{% block title%}AAEE WARS - Sign up{% endblock %}
+
+{% block content%}
+    <h4 class="card-title mt-3 text-center">Cadastrar</h4>
+    {% if error %}
+        <p class="text-center"><div class="card-body collapse show" id="collapse5">
+        <div class="webnots-purple webnots-notification-box">{{ error }}</div>
+        </div></p>
+    {% endif %}
+    <form method="post" action="{% url 'register' %}">
+        {% csrf_token %}
+        <div class="form-group input-group">
+           <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+           </div>
+           <input class="form-control form-control-sm" placeholder="Primeiro Nome" type="text" id="first_name" name="first_name" required>
+        </div>
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+               <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+            </div>
+            <input class="form-control form-control-sm" placeholder="Apelido" type="text" id="last_name" name="last_name" required>
+         </div>
+        <div class="form-group input-group">
+           <div class="input-group-prepend">
+              <span class="input-group-text pd-x-9"> <i class="fa fa-envelope"></i> </span>
+           </div>
+           <input class="form-control form-control-sm" placeholder="Email" type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+               <span class="input-group-text pd-x-9"> <i class="fa fa-smile-o"></i> </span>
+            </div>
+            <input class="form-control form-control-sm" placeholder="Username" type="text" id="username" name="username" required>
+         </div>
+        <div class="form-group input-group">
+           <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+           </div>
+           <input class="form-control form-control-sm" placeholder="Password" type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group input-group">
+           <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+           </div>
+           <input class="form-control form-control-sm" placeholder="Password Again" type="password" id="confirm_password" name="confirm_password" required>
+        </div>
+        <div class="form-group">
+           <button type="submit" class="btn btn-custom-primary btn-block tx-13"> Create Account </button>
+        </div>
+        <p class="text-center">Already Singed Up? <a href="{% url 'login' %}">Sing In</a> </p>
+     </form>
+    
+{% endblock%}
