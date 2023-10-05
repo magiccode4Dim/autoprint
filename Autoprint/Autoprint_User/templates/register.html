@@ -43,8 +43,12 @@
                      <div class="control-indicator"></div>
                   </label>
                {% endfor %}
-
-               
+               {% if is_superuser %}
+                  <label class="control control-radio">Agente
+                     <input type="radio" name="catego" value="Agente"  />
+                     <div class="control-indicator"></div>
+                  </label>
+               {% endif %}               
             </div>
          </div>
 

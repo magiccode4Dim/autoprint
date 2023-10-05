@@ -6,14 +6,36 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
+from Autoprint_API.models import Cliente
+from django.urls import reverse
 # Create your views here.
 WEB_PATH = '/user'
+CLIENTE_WEB_PATH = '/cliente'
+DEFAULTPHOTO = "default.png"
 
 CATEGORIAS = ["Estudante", "Funcionario","Outro"]
 
 #redirect to login
 def redirect_login(request):
     return redirect(WEB_PATH+'/login')
+
+
+@login_required
+def dashBoard(request):
+    #response =render(request,'userpages/dashboard.html',{'user':request.user})
+    utilizador = request.user
+    if utilizador.is_superuser :
+        #QUANDO O UTILIZADOR É SUPER USER
+        return HttpResponse("SUPER USER")
+    else:
+        cli = Cliente.objects.get(user_id = utilizador.id)
+        if cli.categoria == "Agente":
+            # QUANDO O UTILIZADOR FOR UM AGENTE
+            return HttpResponse("AGENTE")
+        else:
+            # Quando for um cliente normal
+            return redirect(CLIENTE_WEB_PATH +"/dashboard")
+        #return response  
 
 #Logout
 @login_required
@@ -25,7 +47,8 @@ def logOut(request):
 class register(View):
     def get(self, request, *args, **kwargs):
         error_message = request.GET.get('error')
-        return render(request,'register.html',{"error":error_message,"cats":CATEGORIAS})
+        return render(request,'register.html',{"error":error_message,"cats":CATEGORIAS,
+                                               "is_superuser":request.user.is_superuser})
     def post(self, request, *args, **kwargs):
         username = request.POST['username']
         password = request.POST['password']
@@ -33,6 +56,12 @@ class register(View):
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         email = request.POST['email']
+        categoria = request.POST['catego']
+        
+        # Somente um superuser pode criar agentes
+        if(categoria=="Agente" and request.user.is_superuser == False ):
+            return redirect(WEB_PATH+"/register/?error=Acesso Negado")
+        
         # Verificar se as senhas coincidem
         if request.POST['password'] != confirm_password:
             return redirect(WEB_PATH+"/register/?error=Passwords does not equals")
@@ -48,7 +77,17 @@ class register(View):
             first_name=first_name,
             last_name=last_name,
             email=email)
-        # Redirecionar para uma página de sucesso ou fazer login automaticamente
+        try:
+            newuser = User.objects.get(username=username)
+            c =  Cliente()
+            c.user = newuser
+            c.categoria = categoria
+            c.foto = DEFAULTPHOTO
+            c.save()
+        except User.DoesNotExist:
+            return redirect(WEB_PATH+"/register/?error=Erro ao criar o  cliente, usuario nao existe")
+        except User.MultipleObjectsReturned:
+            return redirect(WEB_PATH+"/register/?error=Multiple Object Returned")
         return render(request,'register_done.html',{'user':request.user})
 
 

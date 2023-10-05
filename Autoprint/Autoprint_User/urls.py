@@ -4,6 +4,7 @@ import os
 from .views import * 
 
 urlpatterns = [
+    path('',dashBoard,name="dashboard"),
     path('login/', auth_views.LoginView.as_view(
         template_name='login.html',
         ), name='login'),

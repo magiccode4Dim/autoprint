@@ -1,0 +1,297 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Autorprint 2023">
+  
+    <title>{% block title%}{% endblock%} </title>
+    <link rel="stylesheet" href="{% static 'assets\css\materialdesignicons.css'%}"/>
+  
+    <!-- PLUGINS CSS STYLE -->
+    <link href="{% static 'assets/plugins/simplebar/simplebar.css'%}" rel="stylesheet" />
+    <link href="{% static 'assets/plugins/nprogress/nprogress.css'%}" rel="stylesheet" />
+  
+    <!-- No Extra plugin used -->
+
+    <!-- SLEEK CSS -->
+    <link type="text/css" rel="stylesheet" href="{% static 'assets\css\sleek.css'%}"/>
+
+    <link rel="icon" href="{% static 'assets/img/aaee.png'%}" type="image/x-icon">
+  
+    <script href="{% static 'assets\plugins\nprogress\nprogress.js'%}"></script>
+  </head>
+
+  <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">
+    <script>
+      NProgress.configure({ showSpinner: false });
+      NProgress.start();
+    </script>
+
+    <div class="wrapper">
+
+        <!-- ====================================
+          ——— LEFT SIDEBAR WITH OUT FOOTER
+        ===================================== -->
+        <aside class="left-sidebar bg-sidebar">
+          <div id="sidebar" class="sidebar sidebar-with-footer">
+            <!-- Aplication Brand -->
+            <div class="app-brand">
+              <a href="/" title="Autoprint">
+                <svg
+                  class="brand-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  preserveAspectRatio="xMidYMid"
+                  width="30"
+                  height="33"
+                  viewBox="0 0 30 33">
+                  <g fill="none" fill-rule="evenodd">
+                    <path class="logo-fill-blue" fill="#7DBCFF" d="M0 4v25l8 4V0zM22 4v25l8 4V0z" />
+                    <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
+                  </g>
+                </svg>
+
+                <span class="brand-name text-truncate">Autoprint</span>
+              </a>
+            </div>
+
+            <!-- begin sidebar scrollbar -->
+            <div class="" data-simplebar style="height: 100%;">
+              <!-- sidebar menu -->
+              <ul class="nav sidebar-inner" id="sidebar-menu">
+                <li class="has-sub active expand ">
+                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#Impressoes"
+                    aria-expanded="false" aria-controls="dashboard">
+                    <i class="mdi mdi-printer"></i>
+                    <span class="nav-text">Imprimir</span> <b class="caret"></b>
+                  </a>
+
+                  <ul class="collapse " id="Impressoes" data-parent="#sidebar-menu">
+                    <div class="sub-menu">
+                      <li class="">
+                        <a class="sidenav-item-link" href="analytics.html">
+                          <span class="nav-text">Carregar documento</span>
+                          <span class="badge badge-danger">PDF</span>
+                          <span class="badge badge-primary">WORD</span>
+                        </a>
+                      </li>
+                      <li class="">
+                        <a class="sidenav-item-link" href="index.html">
+                          <span class="nav-text">Documentos para imprimir</span>
+                        </a>
+                      </li>
+                    </div>
+                  </ul>
+                </li>
+
+                <li class="has-sub active expand ">
+                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#pedidos"
+                    aria-expanded="false" aria-controls="dashboard">
+                    <i class="mdi mdi-timetable"></i>
+                    <span class="nav-text">Pedidos</span> <b class="caret"></b>
+                  </a>
+
+                  <ul class="collapse " id="pedidos" data-parent="#sidebar-menu">
+                    <div class="sub-menu">
+                      <li class="">
+                        <a class="sidenav-item-link" href="analytics.html">
+                          <span class="nav-text">Requisitar impressão</span>
+                          <span class="badge badge-success">Print</span>
+                        </a>
+                      </li>
+                      <li class="">
+                        <a class="sidenav-item-link" href="index.html">
+                          <span class="nav-text">Lista de Pedidos</span>
+                        </a>
+                      </li>
+
+                      
+                    </div>
+                  </ul>
+                </li>
+
+                <li class="has-sub ">
+                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#doc"
+                    aria-expanded="false" aria-controls="app">
+                    <i class="mdi mdi-file-document"></i>
+                    <span class="nav-text">Documentos</span> <b class="caret"></b>
+                  </a>
+
+                  <ul class="collapse " id="doc" data-parent="#sidebar-menu">
+                    <div class="sub-menu">
+                      <li class="">
+                        <a class="sidenav-item-link" href="chat.html">
+                          <span class="nav-text">Lista de documentos</span>
+                        </a>
+                      </li>
+                    </div>
+                  </ul>
+                </li>
+
+                <li class="has-sub ">
+                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#sobre"
+                    aria-expanded="false" aria-controls="app">
+                    <i class="mdi mdi-help-circle"></i>
+                    <span class="nav-text">Sistema</span> <b class="caret"></b>
+                  </a>
+
+                  <ul class="collapse " id="sobre" data-parent="#sidebar-menu">
+                    <div class="sub-menu">
+                      <li class="">
+                        <a class="sidenav-item-link" href="chat.html">
+                          <span class="nav-text">Historico</span>
+                        </a>
+                      </li>
+                      <li class="">
+                        <a class="sidenav-item-link" href="chat.html">
+                          <span class="nav-text">Definições</span>
+                        </a>
+                      </li>
+                      <li class="">
+                        <a class="sidenav-item-link" href="chat.html">
+                          <span class="nav-text">Ajuda</span>
+                        </a>
+                      </li>
+                      
+                      <li class="">
+                        <a class="sidenav-item-link" href="chat.html">
+                          <span class="nav-text">Sobre</span>
+                        </a>
+                      </li>
+                    </div>
+                  </ul>
+                </li>
+         
+              </ul>
+            </div>
+
+          </div>
+        </aside>
+
+
+          <!-- ====================================
+        ——— PAGE WRAPPER
+        ===================================== -->
+        <div class="page-wrapper">
+          
+          <!-- Header -->
+          <header class="main-header " id="header">
+            <nav class="navbar navbar-static-top navbar-expand-lg">
+              <!-- Sidebar toggle button -->
+              <button id="sidebar-toggler" class="sidebar-toggle">
+                <span class="sr-only">Autoprint</span>
+              </button>
+              <!-- search form -->
+              <div class="search-form d-none d-lg-inline-block">
+                <div class="input-group">
+                  <button type="button" name="search" id="search-btn" class="btn btn-flat">
+                    <i class="mdi mdi-magnify"></i>
+                  </button>
+                  <input type="text" name="query" id="search-input" class="form-control" placeholder="Pesquisar documento"
+                    autofocus autocomplete="off" />
+                </div>
+                <div id="search-results-container">
+                  <ul id="search-results"></ul>
+                </div>
+              </div>
+
+              <div class="navbar-right ">
+                <ul class="nav navbar-nav">
+                  
+                  <!-- User Account -->
+                  <li class="dropdown user-menu">
+                    <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                      <img src="{% static 'assets/img/aaee.png'%}" class="user-image" alt="User Image" />
+                      <span class="d-none d-lg-inline-block">{{user.first_name}} {{user.last_name}}</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                      <!-- User image -->
+                      <li class="dropdown-header">
+                        <img src="{% static 'assets/img/aaee.png'%}" class="img-circle" alt="Foto" />
+                        <div class="d-inline-block">
+                          {{user.first_name}} <small class="pt-1">{{user.email}}</small>
+                        </div>
+                      </li>
+
+                      <li>
+                        <a href="/{{USER_URLS.PROFILE}}">
+                          <i class="mdi mdi-account"></i> Meu Perfil
+                        </a>
+                      </li>
+                      <li class="right-sidebar-in">
+                        <a href="/{{USER_URLS.CONFIGS}}"> <i class="mdi mdi-settings"></i> Definições </a>
+                      </li>
+
+                      <li class="dropdown-footer">
+                        <a href="/{{USER_URLS.LOGOUT}}"> <i class="mdi mdi-logout"></i> Sair </a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </header>
+
+          
+          <!-- ====================================
+          ——— CONTENT WRAPPER
+          ===================================== -->
+          <div class="content-wrapper">
+            <div class="content">
+
+
+
+
+
+<div class="breadcrumb-wrapper">
+	<h1>Autoprint</h1>
+      </div>
+
+      
+      
+      
+
+{% block content %}
+                     
+{% endblock%}
+
+
+      </div> <!-- End Content -->
+    </div> <!-- End Content Wrapper -->
+    
+    
+    <!-- Footer -->
+    <footer class="footer mt-auto">
+      <div class="copyright bg-white">
+        <p>
+          Copyright &copy; <span id="copy-year"></span> desenvolvido por <a class="text-primary" href="https://github.com/magiccode4Dim" target="_blank">Magiccode</a>.
+        </p>
+      </div>
+      <script>
+        var d = new Date();
+        var year = d.getFullYear();
+        document.getElementById("copy-year").innerHTML = year;
+      </script>
+    </footer>
+
+    </div> <!-- End Page Wrapper -->
+  </div> <!-- End Wrapper -->
+
+
+    <!-- <script type="module">
+      import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
+
+      const el = document.createElement('pwa-update');
+      document.body.appendChild(el);
+    </script> -->
+
+    <!-- Javascript -->
+    <script src="{% static 'assets/plugins/jquery/jquery.min.js'%}"></script>
+    <script src="{% static 'assets/plugins/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+    <script src="{% static 'assets/plugins/simplebar/simplebar.min.js'%}"></script>
+    <script src="{% static 'assets/js/sleek.js'%}"></script>
+</body>
+</html>
+

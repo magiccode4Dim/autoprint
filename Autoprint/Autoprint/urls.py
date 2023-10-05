@@ -18,10 +18,12 @@ from django.contrib import admin
 from django.urls import path,include
 from Autoprint_User.views import redirect_login
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', redirect_login, name='login'),
     path('user/', include('Autoprint_User.urls')),
+    path('cliente/', include('Autoprint_Cliente.urls')),
 ]
 
 
