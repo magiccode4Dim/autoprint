@@ -41,3 +41,8 @@ class Impressao(models.Model):
     pedido = models.IntegerField()
     #faltam outros atributos
     
+class Documento(models.Model):
+    id = models.AutoField(primary_key=True)
+    id_client = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    file = models.FileField(upload_to='DOCUMENTOS/')
+    

@@ -24,6 +24,7 @@ urlpatterns = [
     path('', redirect_login, name='login'),
     path('user/', include('Autoprint_User.urls')),
     path('cliente/', include('Autoprint_Cliente.urls')),
+    path('impressoes/', include('Autoprint_Gestaopedidos.urls')),
 ]
 
 

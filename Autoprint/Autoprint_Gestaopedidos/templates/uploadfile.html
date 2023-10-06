@@ -1,0 +1,28 @@
+{% extends 'basecliente.html' %}
+{% load static %}
+
+{% block title%}Carregar Documento{% endblock %}
+
+{% block content%}
+    <div class="card card-default">
+        <div class="card-header card-header-border-bottom">
+            <h2>Carregar um documento</h2>
+        </div>
+
+        <div class="card-body">
+           <!--Dash--> 
+           <form method="POST" action="{% url 'Autoprint_Gestaopedidos:uploaddocumente' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Selecione um documento ou arraste até a area</label>
+                    <span class="badge badge-danger">PDF</span>
+                    <span class="badge badge-primary">DOCX</span>
+                    <input class="form-control"  type="file" id="formFile" name="file" accept=".pdf, .docx" >
+                </div>
+                <input type="submit" value="Carregar" class="btn btn-outline-primary"/>
+            </form>
+          
+           <!--Dash--> 
+        </div>
+    </div>
+{% endblock%}
