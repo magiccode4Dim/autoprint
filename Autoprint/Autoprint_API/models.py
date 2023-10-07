@@ -6,9 +6,9 @@ from django.utils import timezone
 class Agente(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    descricao = models.CharField(max_length=500)
-    token = models.CharField(max_length=512)
-    foto = models.CharField()
+    descricao = models.CharField(max_length=500, default="")
+    token = models.CharField(max_length=512, default="")
+    foto = models.CharField(default="")
     
 class Cliente(models.Model):
     id = models.AutoField(primary_key=True)
@@ -27,12 +27,13 @@ class Impressora(models.Model):
 class Pedido(models.Model):
     id = models.AutoField(primary_key=True)
     id_client = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    id_impressora = models.ForeignKey(Impressora, on_delete=models.CASCADE)
+    id_agent = models.ForeignKey(Agente, on_delete=models.CASCADE)
     #ID de confirmacao do lado do cliente e id de confirmacao do lado da maquina agente
     idConf_inpre = models.IntegerField()
     idConf_cli = models.IntegerField()
     data_pedido = models.DateField(default=timezone.now)
-    data_conclusao =  models.DateField()
+    data_conclusao =  models.DateField(null=True, default=None)
+    isconfirmed = models.BooleanField(default=False)
 
 class Documento(models.Model):
     id = models.AutoField(primary_key=True)

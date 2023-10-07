@@ -6,7 +6,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
-from Autoprint_API.models import Cliente
+from Autoprint_API.models import Cliente,Agente
 from django.urls import reverse
 # Create your views here.
 WEB_PATH = '/user'
@@ -58,10 +58,6 @@ class register(View):
         email = request.POST['email']
         categoria = request.POST['catego']
         
-        # Somente um superuser pode criar agentes
-        if(categoria=="Agente" and request.user.is_superuser == False ):
-            return redirect(WEB_PATH+"/register/?error=Acesso Negado")
-        
         # Verificar se as senhas coincidem
         if request.POST['password'] != confirm_password:
             return redirect(WEB_PATH+"/register/?error=Passwords does not equals")
@@ -77,17 +73,29 @@ class register(View):
             first_name=first_name,
             last_name=last_name,
             email=email)
-        try:
+        
+        # Somente um superuser pode criar agentes
+        if(categoria=="Agente" and request.user.is_superuser == False ):
+            return redirect(WEB_PATH+"/register/?error=Acesso Negado")
+        elif (categoria=="Agente" and request.user.is_superuser == True ):
             newuser = User.objects.get(username=username)
-            c =  Cliente()
-            c.user = newuser
-            c.categoria = categoria
-            c.foto = DEFAULTPHOTO
-            c.save()
-        except User.DoesNotExist:
-            return redirect(WEB_PATH+"/register/?error=Erro ao criar o  cliente, usuario nao existe")
-        except User.MultipleObjectsReturned:
-            return redirect(WEB_PATH+"/register/?error=Multiple Object Returned")
+            agent =  Agente()
+            agent.user = newuser
+            agent.foto = DEFAULTPHOTO
+            agent.save()
+        
+        if categoria!="Agente":
+            try:
+                newuser = User.objects.get(username=username)
+                c =  Cliente()
+                c.user = newuser
+                c.categoria = categoria
+                c.foto = DEFAULTPHOTO
+                c.save()
+            except User.DoesNotExist:
+                return redirect(WEB_PATH+"/register/?error=Erro ao criar o  cliente, usuario nao existe")
+            except User.MultipleObjectsReturned:
+                return redirect(WEB_PATH+"/register/?error=Multiple Object Returned")
         return render(request,'register_done.html',{'user':request.user})
 
 

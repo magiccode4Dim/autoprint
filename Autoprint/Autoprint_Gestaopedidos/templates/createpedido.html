@@ -1,0 +1,51 @@
+{% extends 'basecliente.html' %}
+{% load static %}
+
+{% block title%}Criar Pedido{% endblock %}
+
+{% block content%}
+    <div class="card card-default">
+        <div class="card-header card-header-border-bottom">
+            <h2>Criar Pedido de impressão</h2>
+        </div>
+
+        <div class="card-body">
+            <form method="POST" action="{% url 'Autoprint_Gestaopedidos:criarpedidoimpressao' %}">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect12">Agente</label>
+                            <select class="form-control" name="agentid" id="exampleFormControlSelect12">
+                                {% for a in agents %}
+                                    <option value="{{a.id}}">@{{a.user.username}} -  {{a.user.first_name}} {{a.user.last_name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                                <p class="text-dark font-weight-medium mb-3">Selecione as documentos do Pedido</p>
+                                {% for i in impressoes %}
+                                  {% if i.pedido == -1 %}
+                                        <label class="control control-checkbox">{{i.id_document.file.name}}
+                                            <input type="checkbox" name="in_{{i.id}}" />
+                                            <div class="control-indicator"></div>
+                                        </label>
+                                   {% endif %}
+    
+                                {% endfor %}
+
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="form-footer pt-5 border-top">
+                    <input type="submit" class="btn btn-primary btn-default" value="Criar"></input>
+                </div>
+            </form>
+        </div>
+    </div>   
+{% endblock%}
