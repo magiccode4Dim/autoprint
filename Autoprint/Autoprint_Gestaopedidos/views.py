@@ -6,24 +6,8 @@ from django.utils.decorators import method_decorator
 from Autoprint_API.models import Documento, Cliente
 import os
 
-USER_WEB_PATH = "user/"
-
-USER_URLS = {
-    "LOGIN":USER_WEB_PATH+"login",
-    "LOGOUT":USER_WEB_PATH+"logout",
-    "PROFILE":USER_WEB_PATH+"profile",
-    "PASSWORD_CHANGE":USER_WEB_PATH+"password_change",
-    "REGISTER":USER_WEB_PATH+"register",
-    "PASSWORD_RESET":USER_WEB_PATH+"password_reset",
-    "CONFIGS":USER_WEB_PATH+"configs",
-}
-
-GESTIN_WEB_PATH = "impressoes/"
-
-GESTIM_URLS = {
-    "UPLOAD_DOCUMENT":GESTIN_WEB_PATH+"uploaddocumet",
-    "DOCUMENT_TO_PRINT":GESTIN_WEB_PATH+"uploaddocumet"
-}
+USER_WEB_PATH = "/user/"
+GESTIN_WEB_PATH = "/impressoes/"
 
 #Verifica se o arquivo é permitido
 def is_valid_file_type(file):
@@ -35,19 +19,26 @@ def is_valid_file_type(file):
 @method_decorator(login_required, name='dispatch')
 class carregarDocumentos(View):
     def get(self, request, *args, **kwargs):
-        response =render(request,'uploadfile.html',{"user":request.user, 
-                                                "USER_URLS":USER_URLS,
-                                                "GESTIM_URLS":GESTIM_URLS
+        response =render(request,'uploadfile.html',{"user":request.user
                                                 })
         return response
     def post(self, request, *args, **kwargs):
         arquivo = request.FILES['file']
         if not is_valid_file_type(arquivo):
             #se o arquivo nao for valido
-            return HttpResponse("Arquivo invalido")
+            return redirect(GESTIN_WEB_PATH+"uploaddocumet/")
         doc =  Documento()
         doc.id_client = Cliente.objects.get(user_id = request.user.id)
         doc.file.save(arquivo.name, arquivo)
         doc.save()
-        return HttpResponse("salvo com sucesso")
+        return redirect(GESTIN_WEB_PATH+"uploadeddocumets/")
         
+        
+@login_required
+def documentosCarregados(request):
+    cli = Cliente.objects.get(user_id = request.user.id)
+    documents = Documento.objects.filter(id_client=cli.id)
+    response =render(request,'uploadeddocs.html',{"user":request.user,
+                                                  "documents":documents
+                                                     })
+    return response

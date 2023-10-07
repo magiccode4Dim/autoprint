@@ -8,7 +8,8 @@ from django.conf.urls.static import static
 app_name = 'Autoprint_Gestaopedidos'
 
 urlpatterns = [
-    path('uploaddocumet/',carregarDocumentos.as_view(),name="uploaddocumente"),    
+    path('uploaddocumet/',carregarDocumentos.as_view(),name="uploaddocumente"), 
+    path('uploadeddocumets/',documentosCarregados,name="uploadeddocumentes"),    
 ]
 
 #configurando o proprio django como servidor de arquivos de media estatico somente para ambiente de desenvolvimento

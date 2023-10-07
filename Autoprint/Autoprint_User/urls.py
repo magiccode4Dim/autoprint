@@ -3,6 +3,8 @@ from django.contrib.auth import views as auth_views
 import os
 from .views import * 
 
+app_name = 'Autoprint_User'
+
 urlpatterns = [
     path('',dashBoard,name="dashboard"),
     path('login/', auth_views.LoginView.as_view(

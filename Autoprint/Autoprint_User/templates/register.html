@@ -12,7 +12,7 @@
      <div class="card-body p-5">
       <h4 class="text-dark mb-5">Cadastrar-se</h4>
       
-      <form method="post" action="{% url 'register' %}">
+      <form method="post" action="{% url 'Autoprint_User:register' %}">
          {% csrf_token %}
         <div class="row">
           <div class="form-group col-md-12 mb-4">
@@ -65,7 +65,7 @@
             <input type="submit" class="btn btn-lg btn-primary btn-block mb-4" value="Cadastrar">
 
             <p>Já tem uma conta?
-               <a class="text-blue" href="{% url 'login' %}">Login</a>
+               <a class="text-blue" href="{% url 'Autoprint_User:login' %}">Login</a>
              </p>
           </div>
         </div>

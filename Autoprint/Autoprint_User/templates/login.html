@@ -6,7 +6,7 @@
    <div class="card-body p-5">
       <h4 class="text-dark mb-5">Entrar</h4>
       
-      <form action="{% url 'login' %}" method="POST"> {% csrf_token %}
+      <form action="{% url 'Autoprint_User:login' %}" method="POST"> {% csrf_token %}
         <div class="row">
           <div class="form-group col-md-12 mb-4">
             <input type="text" class="form-control input-lg" id="username" name="username" aria-describedby="emailHelp" placeholder="Username">
@@ -25,13 +25,13 @@
                 </label>
               </div>
 
-              <p><a class="text-blue" href="{% url 'password_reset' %}">Esqueceu a senha?</a></p>
+              <p><a class="text-blue" href="{% url 'Autoprint_User:password_reset' %}">Esqueceu a senha?</a></p>
             </div>
 
             <input type="submit" class="btn btn-lg btn-primary btn-block mb-4" value="Entrar">
 
             <p>Ainda não tem uma conta?
-              <a class="text-blue" href="{% url 'register' %}">Cadastrar-se</a>
+              <a class="text-blue" href="{% url 'Autoprint_User:register' %}">Cadastrar-se</a>
             </p>
           </div>
         </div>
