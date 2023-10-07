@@ -9,7 +9,9 @@ app_name = 'Autoprint_Gestaopedidos'
 
 urlpatterns = [
     path('uploaddocumet/',carregarDocumentos.as_view(),name="uploaddocumente"), 
-    path('uploadeddocumets/',documentosCarregados,name="uploadeddocumentes"),    
+    path('uploadeddocumets/',documentosCarregados,name="uploadeddocumentes"),
+    path('adicionarimpressao/',adicionarImpressao.as_view(),name="adicionarimpressao"),    
+    path('minhasimpressoes/',impressoesCriadas,name="minhasimpressoes"),   
 ]
 
 #configurando o proprio django como servidor de arquivos de media estatico somente para ambiente de desenvolvimento

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 # Create your models here.
 class Agente(models.Model):
@@ -30,19 +31,22 @@ class Pedido(models.Model):
     #ID de confirmacao do lado do cliente e id de confirmacao do lado da maquina agente
     idConf_inpre = models.IntegerField()
     idConf_cli = models.IntegerField()
-    data_pedido = models.DateField()
+    data_pedido = models.DateField(default=timezone.now)
     data_conclusao =  models.DateField()
 
-class Impressao(models.Model):
-    id = models.AutoField(primary_key=True)
-    id_client = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    documento = models.CharField()
-    data_criacao = models.DateField()
-    pedido = models.IntegerField()
-    #faltam outros atributos
-    
 class Documento(models.Model):
     id = models.AutoField(primary_key=True)
     id_client = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     file = models.FileField(upload_to='DOCUMENTOS/')
+
+
+class Impressao(models.Model):
+    id = models.AutoField(primary_key=True)
+    id_client = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    id_document = models.ForeignKey(Documento, on_delete=models.CASCADE)
+    data_criacao = models.DateField(default=timezone.now)
+    pedido = models.IntegerField(default=-1)
+    #faltam outros atributos
+    
+
     

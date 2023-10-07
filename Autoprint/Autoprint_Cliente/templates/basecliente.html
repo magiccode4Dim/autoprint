@@ -43,7 +43,7 @@
           <div id="sidebar" class="sidebar sidebar-with-footer">
             <!-- Aplication Brand -->
             <div class="app-brand">
-              <a href="/" title="Autoprint">
+              <a href="{% url 'Autoprint_User:dashboard' %}" title="Autoprint">
                 <svg
                   class="brand-icon"
                   xmlns="http://www.w3.org/2000/svg"
@@ -99,12 +99,12 @@
                   <ul class="collapse " id="doc" data-parent="#sidebar-menu">
                     <div class="sub-menu">
                       <li class="">
-                        <a class="sidenav-item-link" href="chat.html">
+                        <a class="sidenav-item-link" href="{% url 'Autoprint_Gestaopedidos:adicionarimpressao'  %}">
                           <span class="nav-text">Nova impressão</span>
                         </a>
                       </li>
                       <li class="">
-                        <a class="sidenav-item-link" href="chat.html">
+                        <a class="sidenav-item-link" href="{% url 'Autoprint_Gestaopedidos:minhasimpressoes'  %}">
                           <span class="nav-text">Lista de impressões</span>
                         </a>
                       </li>

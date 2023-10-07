@@ -1,0 +1,74 @@
+{% extends 'basecliente.html' %}
+{% load static %}
+
+{% block title%}Criar impressão{% endblock %}
+
+{% block content%}
+    <div class="card card-default">
+        <div class="card-header card-header-border-bottom">
+            <h2>Criar Impressão</h2>
+        </div>
+
+        <div class="card-body">
+            <form method="POST" action="{% url 'Autoprint_Gestaopedidos:adicionarimpressao' %}">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect12">Documento</label>
+                            <select class="form-control" name="docid" id="exampleFormControlSelect12">
+                                {% for d in documents %}
+                                    <option value="{{d.id}}">{{d.file.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect12">Layoult</label>
+                            <select class="form-control" id="exampleFormControlSelect12">
+                                <option>Vertical</option>
+                                <option>Horizontal</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <div class="col-12 col-md-3 text-right">
+                                <label for="Radios">Páginas a imprimir</label>
+                            </div>
+    
+                            <div class="col-12 col-md-9">
+                                <label class="control control-radio">Todas
+                                    <input type="radio" name="radio1" checked="checked" />
+                                    <div class="control-indicator"></div>
+                                </label>
+                                    <input type="text" class="form-control" placeholder="Exemplo: 1, 1-2 ou 2-30">
+                            </div>
+                         
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="State">Número de Copias</label>
+                                    <input type="text" class="form-control" placeholder="1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+
+                <div class="form-footer pt-5 border-top">
+                    <input type="submit" class="btn btn-primary btn-default" value="Criar"></input>
+                </div>
+            </form>
+        </div>
+    </div>   
+{% endblock%}
