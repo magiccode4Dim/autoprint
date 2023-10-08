@@ -16,6 +16,7 @@
                 <th>Id</th>
                 <th>Agente</th>
                 <th>CCC</th>
+                <th>Documentos</th>              
                 <th class="d-none d-lg-table-cell">Status</th>
                 <th></th>
             </tr>
@@ -23,15 +24,19 @@
             <tbody>
             {% for p in pedidos %}
                 <tr>
-                    <td >{{p.id}}</td>
+                    <td >{{p.0.id}}</td>
                     <td >
-                        <a class="text-dark" href="">@{{p.id_agent.user.username}}</a>
+                        <a class="text-dark" href="">@{{p.0.id_agent.user.username}}</a>
                     </td>
                     <td >
-                        <a class="text-dark" href="">{{p.idConf_cli}}</a>
+                        <a class="text-dark" href="">{{p.0.idConf_cli}}</a>
                     </td>
                     <td >
-                        {% if p.isconfirmed %}
+                        <a class="text-dark" href="">{{p.1}}</a>
+                    </td>
+                    
+                    <td >
+                        {% if p.0.isconfirmed %}
                             <span class="badge badge-success">Confirmado</span>
                         {% else %}
                             <span class="badge badge-danger">Não confirmado</span>

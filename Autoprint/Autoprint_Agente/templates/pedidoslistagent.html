@@ -1,0 +1,63 @@
+{% extends 'baseagent.html' %}
+{% load static %}
+
+{% block title%}Pedidos de Impressão{% endblock %}
+
+{% block content%}
+    <!-- Recent Order Table -->
+    <div class="card card-table-border-none recent-orders" id="recent-orders">
+        <div class="card-header justify-content-between">
+        <h2>Pedidos de Impressão</h2>
+        </div>
+        <div class="card-body pt-0 pb-5">
+        <table class="table card-table table-responsive table-responsive-large" style="width:100%">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Cliente</th>
+                <th>CCP</th>
+                <th>Documentos</th>              
+                <th class="d-none d-lg-table-cell">Status</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for p in pedidos %}
+                <tr>
+                    <td >{{p.0.id}}</td>
+                    <td >
+                        <a class="text-dark" href="">@{{p.0.id_client.user.username}}</a>
+                    </td>
+                    <td >
+                        <a class="text-dark" href="">{{p.0.idConf_inpre}}</a>
+                    </td>
+                    <td >
+                        <a class="text-dark" href="">{{p.1}}</a>
+                    </td>
+                    
+                    <td >
+                        {% if p.0.isconfirmed %}
+                            <span class="badge badge-success">Confirmado</span>
+                        {% else %}
+                            <span class="badge badge-danger">Não confirmado</span>
+                        {% endif %}      
+                    </td>
+                    <td class="text-right">
+                    <div class="dropdown show d-inline-block widget-dropdown">
+                        <a class="dropdown-toggle icon-burger-mini" href="" role="button" id="dropdown-recent-order1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static"></a>
+                        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-recent-order1">
+                        <li class="dropdown-item">
+                            <a href="#">Ver</a>
+                        </li>
+                        </ul>
+                    </div>
+                    </td>
+
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+        </div>
+    </div>
+  {% endblock%}

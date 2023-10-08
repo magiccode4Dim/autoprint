@@ -6,7 +6,7 @@ from django.utils.decorators import method_decorator
 from Autoprint_API.models import Documento, Cliente,Impressao, Agente, Pedido
 import os
 from django.utils.datastructures import MultiValueDictKeyError
-
+from django.utils import timezone
 import random
 
 #retorna um numero de confirmacao aleatorio
@@ -129,7 +129,37 @@ class criarPedidoImpressao(View):
 def pedidosCriados(request):
     cli = Cliente.objects.get(user_id = request.user.id)
     pedidos = Pedido.objects.filter(id_client=cli.id)
+    pedidoswithdocs = list()
+    for p in pedidos:
+        impreped = Impressao.objects.filter(id_client=cli.id,pedido=p.id)
+        docs = ""
+        if(impreped):
+            for i in impreped:
+                docs+=(i.id_document.file.name.split('/')[1])+" | "
+            pedidoswithdocs.append((p,docs))
+                
+                
+    
+
     response =render(request,'pedidoslist.html',{"user":request.user,
-                                                  "pedidos":pedidos
+                                                  "pedidos":pedidoswithdocs
                                                      })
     return response
+
+#confirmar pedido
+@method_decorator(login_required, name='dispatch')
+class confirmarPedido(View):
+    def get(self, request, *args, **kwargs):
+        cli = Cliente.objects.get(user_id = request.user.id)
+        response =render(request,'confirmarpedido.html',{"user":request.user
+                                                })
+        return response
+    def post(self, request, *args, **kwargs):
+        if len(request.POST.get("ccped")) == 0:return redirect(GESTIN_WEB_PATH+"confirmarpedido/")
+        cli = Cliente.objects.get(user_id = request.user.id)
+        pedidos = Pedido.objects.filter(id_client=cli.id,idConf_inpre=int(request.POST.get("ccped")))
+        if pedidos:
+            pedidos.update(isconfirmed=True,data_conclusao=timezone.now().strftime('%Y-%m-%d'))
+        else:
+            return redirect(GESTIN_WEB_PATH+"confirmarpedido/")
+        return redirect(GESTIN_WEB_PATH+"pedidoscriados/")

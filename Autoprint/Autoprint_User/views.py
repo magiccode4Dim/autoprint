@@ -11,6 +11,7 @@ from django.urls import reverse
 # Create your views here.
 WEB_PATH = '/user'
 CLIENTE_WEB_PATH = '/cliente'
+AGENT_WEB_PATH = '/agent'
 DEFAULTPHOTO = "default.png"
 
 CATEGORIAS = ["Estudante", "Funcionario","Outro"]
@@ -28,14 +29,16 @@ def dashBoard(request):
         #QUANDO O UTILIZADOR É SUPER USER
         return HttpResponse("SUPER USER")
     else:
-        cli = Cliente.objects.get(user_id = utilizador.id)
-        if cli.categoria == "Agente":
-            # QUANDO O UTILIZADOR FOR UM AGENTE
-            return HttpResponse("AGENTE")
-        else:
+        try:
+            ob = Cliente.objects.get(user_id = utilizador.id)
             # Quando for um cliente normal
-            return redirect(CLIENTE_WEB_PATH +"/dashboard")
-        #return response  
+            if ob:
+                return redirect(CLIENTE_WEB_PATH +"/dashboard")
+        except Exception as e:
+            #quando for um agente
+            ob = Agente.objects.get(user_id = utilizador.id)
+            if ob:
+                return redirect(AGENT_WEB_PATH+"/pedidosdoagente")
 
 #Logout
 @login_required

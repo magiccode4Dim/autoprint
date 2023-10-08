@@ -1,0 +1,33 @@
+{% extends 'basecliente.html' %}
+{% load static %}
+
+{% block title%}Confirmar Pedido{% endblock %}
+
+{% block content%}
+    <div class="card card-default">
+        <div class="card-header card-header-border-bottom">
+            <h2>Confirmar Pedido</h2>
+        </div>
+
+        <div class="card-body">
+            <form method="POST" action="{% url 'Autoprint_Gestaopedidos:confirmarpedido' %}">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="State">Código de Confirmação do Pedido (CCP)</label>
+                                    <input type="text" name="ccped" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>     
+                </div>
+                <div class="form-footer pt-5 border-top">
+                    <input type="submit" class="btn btn-primary btn-default" value="Confirmar"></input>
+                </div>
+            </form>
+        </div>
+    </div>   
+{% endblock%}

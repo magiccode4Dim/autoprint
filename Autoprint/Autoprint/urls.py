@@ -25,6 +25,7 @@ urlpatterns = [
     path('user/', include('Autoprint_User.urls')),
     path('cliente/', include('Autoprint_Cliente.urls')),
     path('impressoes/', include('Autoprint_Gestaopedidos.urls')),
+    path('agent/', include('Autoprint_Agente.urls')),
 ]
 
 

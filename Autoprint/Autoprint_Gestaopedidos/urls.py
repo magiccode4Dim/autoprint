@@ -14,6 +14,7 @@ urlpatterns = [
     path('minhasimpressoes/',impressoesCriadas,name="minhasimpressoes"),   
     path('criarpedidoimpressao/',criarPedidoImpressao.as_view(),name="criarpedidoimpressao"), 
     path('pedidoscriados/',pedidosCriados,name="pedidoscriados"),
+    path('confirmarpedido/',confirmarPedido.as_view(),name="confirmarpedido"), 
 ]
 
 #configurando o proprio django como servidor de arquivos de media estatico somente para ambiente de desenvolvimento
