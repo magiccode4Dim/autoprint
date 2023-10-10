@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'Autoprint_Cliente',
     'Autoprint_Gestaopedidos',
     'Autoprint_Impressora',
-    'Autoprint_User'
+    'Autoprint_User',
     
 ]
 
@@ -54,8 +54,11 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware'
+     
 ]
+
+
 
 ROOT_URLCONF = 'Autoprint.urls'
 
@@ -143,3 +146,5 @@ LOGOUT_URL = 'logout'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'MEDIA')
 MEDIA_URL = '/media/'
+
+

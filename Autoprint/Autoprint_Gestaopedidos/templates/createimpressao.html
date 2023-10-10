@@ -10,6 +10,15 @@
         </div>
 
         <div class="card-body">
+            <iframe
+                width="100%"
+                height="900"
+                src="http://localhost:8000/api/verpdf/instala%C3%A7%C3%A3o-de-um-cluster-de-virtualiza%C3%A7%C3%A3o-proxmox-hiperconvergente.pdf"
+                frameborder="0"
+                style="border:0"
+                allowfullscreen
+            ></iframe>
+
             <form method="POST" action="{% url 'Autoprint_Gestaopedidos:adicionarimpressao' %}">
                 {% csrf_token %}
                 <div class="row">

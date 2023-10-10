@@ -15,3 +15,4 @@ def dashboardCliente(request):
                                                      })
     return response
     
+    
