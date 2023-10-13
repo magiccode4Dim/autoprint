@@ -1,0 +1,14 @@
+{% extends 'baseagent.html' %}
+{% load static %}
+
+{% block title%}Imprimir documento{% endblock %}
+
+{% block content%}
+    <div class="form-footer pt-5 border-top">
+        <a href="{% static '/pdf.js/web/viewer.html'%}?file={{pdfurl}}" target="_blanck" class="btn btn-primary btn-default" >FullScreen</a>
+    </div>
+        <div>
+            <iframe src="{% static '/pdf.js/web/viewer.html'%}?file={{pdfurl}}" width="100%" height="1000"></iframe>
+        </div>
+
+{% endblock%}

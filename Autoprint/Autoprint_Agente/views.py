@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from Autoprint_API.models import Documento, Cliente,Impressao, Agente, Pedido
+from Autoprint_Gestaopedidos.views import get_randomid
 
 # Create your views here.
 @login_required
@@ -22,3 +23,14 @@ def pedidosDoAgente(request):
                                                   "pedidos":pedidoswithdocs
                                                      })
     return response
+
+@login_required
+def viewpdfforprint(request):
+    file = request.GET.get("file")
+    ccc= request.GET.get("ccc")
+    response =render(request,'printpdfview.html',{"user":request.user,"pdfurl":f"/api/downloadfile/{file}?ccc={ccc}"
+                                                     })
+    return response
+
+    
+    

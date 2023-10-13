@@ -7,5 +7,6 @@ from .views import *
 app_name = 'Autoprint_Agente'
 
 urlpatterns = [
-    path('pedidosdoagente/',pedidosDoAgente,name="pedidosdoagente"),    
+    path('pedidosdoagente/',pedidosDoAgente,name="pedidosdoagente"),
+    path('viewpdfforprint/',viewpdfforprint,name="viewpdfforprint")    
 ]

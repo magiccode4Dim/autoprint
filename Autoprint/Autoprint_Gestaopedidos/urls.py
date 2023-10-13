@@ -10,9 +10,9 @@ app_name = 'Autoprint_Gestaopedidos'
 urlpatterns = [
     path('uploaddocumet/',carregarDocumentos.as_view(),name="uploaddocumente"), 
     path('uploadeddocumets/',documentosCarregados,name="uploadeddocumentes"),
-    path('adicionarimpressao/',adicionarImpressao.as_view(),name="adicionarimpressao"),    
-    path('minhasimpressoes/',impressoesCriadas,name="minhasimpressoes"),   
-    path('criarpedidoimpressao/',criarPedidoImpressao.as_view(),name="criarpedidoimpressao"), 
+    path('adicionarimpressao/<str:documento>',adicionarImpressao.as_view(),name="adicionarimpressao"),    
+    #path('minhasimpressoes/',impressoesCriadas,name="minhasimpressoes"),   
+    #path('criarpedidoimpressao/',criarPedidoImpressao.as_view(),name="criarpedidoimpressao"), 
     path('pedidoscriados/',pedidosCriados,name="pedidoscriados"),
     path('confirmarpedido/',confirmarPedido.as_view(),name="confirmarpedido"), 
 ]

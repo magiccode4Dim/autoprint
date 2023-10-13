@@ -78,7 +78,7 @@
                         <a class="sidenav-item-link" href="{% url 'Autoprint_Gestaopedidos:uploaddocumente' %}">
                           <span class="nav-text">Carregar documento</span>
                           <span class="badge badge-danger">PDF</span>
-                          <span class="badge badge-primary">DOCX</span>
+                          <!--<span class="badge badge-primary">DOCX</span>-->
                         </a>
                       </li>
                       <li class="">
@@ -99,52 +99,15 @@
                   <ul class="collapse " id="doc" data-parent="#sidebar-menu">
                     <div class="sub-menu">
                       <li class="">
-                        <a class="sidenav-item-link" href="{% url 'Autoprint_Gestaopedidos:adicionarimpressao'  %}">
-                          <span class="nav-text">Nova impressão</span>
-                        </a>
-                      </li>
-                      <li class="">
-                        <a class="sidenav-item-link" href="{% url 'Autoprint_Gestaopedidos:minhasimpressoes'  %}">
-                          <span class="nav-text">Lista de impressões</span>
-                        </a>
-                      </li>
-                    </div>
-                  </ul>
-                </li>
-
-                <li class="has-sub active expand ">
-                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#pedidos"
-                    aria-expanded="false" aria-controls="dashboard">
-                    <i class="mdi mdi-timetable"></i>
-                    <span class="nav-text">Pedidos</span> <b class="caret"></b>
-                  </a>
-
-                  <ul class="collapse " id="pedidos" data-parent="#sidebar-menu">
-                    <div class="sub-menu">
-                      <li class="">
-                        <a class="sidenav-item-link" href="{% url 'Autoprint_Gestaopedidos:criarpedidoimpressao'  %}">
-                          <span class="nav-text">Fazer pedido de impressão</span>
-                          <span class="badge badge-success">Print</span>
-                        </a>
-                      </li>
-                      <li class="">
                         <a class="sidenav-item-link" href="{% url 'Autoprint_Gestaopedidos:pedidoscriados'  %}">
                           <span class="nav-text">Lista de Pedidos</span>
                         </a>
                       </li>
-                      <li class="">
-                        <a class="sidenav-item-link" href="{% url 'Autoprint_Gestaopedidos:confirmarpedido'  %}">
-                          <span class="nav-text">Confirmar pedido</span>
-                        </a>
-                      </li>
-
-                      
                     </div>
                   </ul>
                 </li>
 
-                
-
+      
                 <li class="has-sub ">
                   <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#sobre"
                     aria-expanded="false" aria-controls="app">

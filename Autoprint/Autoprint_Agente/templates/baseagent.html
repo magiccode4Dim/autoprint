@@ -102,6 +102,11 @@
                   <ul class="collapse " id="pedidos" data-parent="#sidebar-menu">
                     <div class="sub-menu">
                       <li class="">
+                        <a class="sidenav-item-link" href="{% url 'Autoprint_Gestaopedidos:confirmarpedido' %}">
+                          <span class="nav-text">Confirmar pedido</span>
+                        </a>
+                      </li>
+                      <li class="">
                         <a class="sidenav-item-link" href="#">
                           <span class="nav-text">Lista de Pedidos</span>
                         </a>
@@ -117,13 +122,13 @@
                   </ul>
                 </li>
                 <li class="has-sub active expand ">
-                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#pedidos"
+                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#clientes"
                     aria-expanded="false" aria-controls="dashboard">
                     <i class="mdi mdi-face"></i>
                     <span class="nav-text">Clientes</span> <b class="caret"></b>
                   </a>
 
-                  <ul class="collapse " id="pedidos" data-parent="#sidebar-menu">
+                  <ul class="collapse " id="clientes" data-parent="#sidebar-menu">
                     <div class="sub-menu">
                       <li class="">
                         <a class="sidenav-item-link" href="#">
@@ -206,7 +211,7 @@
                   <button type="button" name="search" id="search-btn" class="btn btn-flat">
                     <i class="mdi mdi-magnify"></i>
                   </button>
-                  <input type="text" name="query" id="search-input" class="form-control" placeholder="Pesquisar documento"
+                  <input type="text" name="query" id="search-input" class="form-control" placeholder="Pesquisar"
                     autofocus autocomplete="off" />
                 </div>
                 <div id="search-results-container">

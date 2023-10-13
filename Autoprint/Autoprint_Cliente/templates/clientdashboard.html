@@ -31,23 +31,13 @@
                             <img class="card-img-top" src="{% static 'assets/img/printer.png'%}">
         
                             <div class="card-body">
-                                <h5 class="card-title text-primary">Impressões</h5>
-                                <p class="card-text pb-3">Crie impressões especificando todos os detalhes de como o documento deve ser impresso </p>
-                                <a href="{% url 'Autoprint_Gestaopedidos:adicionarimpressao'  %}" class="btn btn-outline-primary">Criar impressão</a>
+                                <h5 class="card-title text-primary">Minhas Impressões</h5>
+                                <p class="card-text pb-3">Pode ver a lista de documentos a serem impressos e, informações relativas ao estado de pedidos.  </p>
+                                <a href="{% url 'Autoprint_Gestaopedidos:pedidoscriados'  %}" class="btn btn-outline-primary">Ver lista de impressões</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-xl-3">
-                        <div class="card mb-4">
-                            <img class="card-img-top" src="{% static 'assets/img/order.png'%}">
-        
-                            <div class="card-body">
-                                <h5 class="card-title text-primary">Pedidos</h5>
-                                <p class="card-text pb-3">Pode ver a lista de documentos a serem impressos e, informações relativas a pedidos. </p>
-                                <a href="{% url 'Autoprint_Gestaopedidos:pedidoscriados'  %}" class="btn btn-outline-primary">Ver lista de pedidos</a>
-                            </div>
-                        </div>
-                    </div>
+
 
                     
         

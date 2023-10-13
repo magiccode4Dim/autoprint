@@ -1,6 +1,7 @@
 {% extends 'basecliente.html' %}
 {% load static %}
 
+
 {% block title%}Documentos carregados{% endblock %}
 
 {% block content%}
@@ -16,30 +17,32 @@
                 <th>Id</th>
                 <th>Nome</th>
                 <th>Tamanho</th>
-                <th class="d-none d-lg-table-cell">Tipo</th>
+                <th class="d-none d-lg-table-cell"></th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
             {% for d in documents %}
                 <tr>
-                    <td >{{d.id}}</td>
-                    {% with nome_documento=d.file.name %}
+                    <td >{{d.0.id}}</td>
+                    {% with nome_documento=d.0.file.name %}
                     
                     <td >
-                        <a class="text-dark" href="">{{nome_documento}}</a>
+                        <a class="text-dark" href="">{{ d.1 }}</a>
                     </td>
                     <td >
-                        <a class="text-dark" href="">{{d.file.size}} bytes</a>
+                        <a class="text-dark" href="">{{d.0.file.size}} bytes</a>
                     </td>
                     <td >
-                        {% if nome_documento|lower|slice:"-4:" == ".pdf" %}
-                            <span class="badge badge-danger">PDF</span>
-                        {% elif nome_documento|lower|slice:"-5:" == ".docx" %}
-                            <span class="badge badge-primary">DOCX</span>
-                        {% else %}
-                            <span class="badge badge-warnning">NA</span>
-                        {% endif %}      
+                        {% with docu=d.1 %}
+                            {% if nome_documento|lower|slice:"-4:" == ".pdf" %}
+                            <a href="{% url 'Autoprint_Gestaopedidos:adicionarimpressao' documento=docu  %}"> <span class="badge badge-danger">(PDF) Imprimir</span></a>
+                            {% elif nome_documento|lower|slice:"-5:" == ".docx" %}
+                                <a href="{% url 'Autoprint_Gestaopedidos:adicionarimpressao' documento=docu  %}" ><span class="badge badge-primary">(DOCX) Imprimir</span></a>
+                            {% else %}
+                                <span class="badge badge-warnning">NA</span>
+                            {% endif %}  
+                        {% endwith %}    
                     </td>
                     <td class="text-right">
                     <div class="dropdown show d-inline-block widget-dropdown">
