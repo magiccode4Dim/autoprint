@@ -14,7 +14,10 @@ urlpatterns = [
     #path('minhasimpressoes/',impressoesCriadas,name="minhasimpressoes"),   
     #path('criarpedidoimpressao/',criarPedidoImpressao.as_view(),name="criarpedidoimpressao"), 
     path('pedidoscriados/',pedidosCriados,name="pedidoscriados"),
-    path('confirmarpedido/',confirmarPedido.as_view(),name="confirmarpedido"), 
+    path('confirmarpedido/',confirmarPedido.as_view(),name="confirmarpedido"),
+    path('apagarpedido/<int:id>',apagarPedido,name="apagarpedido"),
+    path('apagardocumento/<int:id>',apagarDocumento,name="apagardocumento"),
+    path('baixardocumento/<int:id>',baixarDocumento,name="baixardocumento"),  
 ]
 
 #configurando o proprio django como servidor de arquivos de media estatico somente para ambiente de desenvolvimento

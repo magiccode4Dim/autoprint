@@ -44,7 +44,8 @@ class Documento(models.Model):
 class Impressao(models.Model):
     id = models.AutoField(primary_key=True)
     id_client = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    id_document = models.ForeignKey(Documento, on_delete=models.CASCADE)
+    id_document = models.ForeignKey(Documento, on_delete=models.SET_NULL, null=True) #permitir que o documento seja apagado sem que a impressa
+                                                                                    #sem apagar a impressao tambem
     data_criacao = models.DateField(default=timezone.now)
     pedido = models.IntegerField(default=-1)
     #faltam outros atributos

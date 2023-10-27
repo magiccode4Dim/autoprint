@@ -8,6 +8,7 @@ import os
 from django.utils.datastructures import MultiValueDictKeyError
 from django.utils import timezone
 import random
+from django.conf import settings
 
 #retorna um numero de confirmacao aleatorio
 def get_randomid():
@@ -17,6 +18,7 @@ def get_randomid():
 USER_WEB_PATH = "/user/"
 GESTIN_WEB_PATH = "/impressoes/"
 AGENT_WEB_PATH = "/agent/"
+API_WEB_PATH = "/api/"
 
 #Verifica se o arquivo é permitido
 def is_valid_file_type(file):
@@ -195,3 +197,36 @@ class confirmarPedido(View):
         inp = Impressao.objects.get(pedido=pedidos.first().id)
         doc = Documento.objects.get(id=inp.id_document.id)
         return redirect(AGENT_WEB_PATH+"viewpdfforprint?file="+doc.file.name.split("/")[1]+"&ccc="+request.POST.get("ccped"))
+    
+#apagar pedido
+@login_required
+def apagarPedido(request,id):
+    cli = Cliente.objects.get(user_id = request.user.id)
+    pedido = Pedido.objects.get(id=id, id_client=cli.id)
+    pedido.delete()
+    return redirect(GESTIN_WEB_PATH+"pedidoscriados/")
+
+#apagar documento
+@login_required
+def apagarDocumento(request,id):
+    cli = Cliente.objects.get(user_id = request.user.id)
+    docu = Documento.objects.get(id=id, id_client=cli.id)
+    if(docu):
+        caminho_arquivo = os.path.join(settings.MEDIA_ROOT, str(docu.file))
+        if os.path.exists(caminho_arquivo):
+                # Remove o arquivo do sistema de arquivos
+                os.remove(caminho_arquivo)
+                docu.delete()
+    return redirect(GESTIN_WEB_PATH+"uploadeddocumets/")
+
+#baixar documento
+@login_required
+def baixarDocumento(request,id):
+    cli = Cliente.objects.get(user_id = request.user.id)
+    docu = Documento.objects.get(id=id, id_client=cli.id)
+    if(docu):
+        caminho_arquivo = os.path.join(settings.MEDIA_ROOT, str(docu.file))
+        if os.path.exists(caminho_arquivo):
+            filename = docu.file.name.split("/")[1]
+            return redirect(API_WEB_PATH+f"downloadfile/{filename}")
+    return JsonResponse({"error":"permissao negada"})
