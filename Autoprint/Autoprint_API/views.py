@@ -11,6 +11,9 @@ from Autoprint_API.models import Documento, Cliente,Impressao, Agente, Pedido
 from urllib.parse import quote
 from django.views.decorators.clickjacking import xframe_options_exempt
 from Autoprint_Gestaopedidos.views import get_randomid
+from django.core.serializers import serialize
+import json
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -54,3 +57,25 @@ def readpdf(request,pdfname):
     response = render(request,"viewpdf.html")
     response.set_cookie('documentname', quote(pdfname))
     return response
+
+#AGENTE
+#Retorna uma lista com os pedidos do agente
+@login_required
+def pedidosDoAgenteJson(request):
+    agent = Agente.objects.get(user_id = request.user.id)
+    pedidos = Pedido.objects.filter(id_agent=agent.id)
+    pedidoswithdocs = list()
+    for p in pedidos:
+        impreped = Impressao.objects.filter(id_client=p.id_client.id,pedido=p.id)
+        docs = ""
+        if(impreped):
+            for i in impreped:
+                docs+=(i.id_document.file.name.split('/')[1])+" | "
+            pedidoJson = json.loads(serialize('json', [p]))[0]
+            pedidoJson["documentName"] =  docs
+            clientJson = json.loads(serialize('json', [Cliente.objects.get(id=(pedidoJson["fields"])["id_client"])]))[0]
+            userJson = json.loads(serialize('json', [User.objects.get(id=(clientJson["fields"])["user"])]))[0]
+            pedidoJson["clientusername"]=   (userJson["fields"])["username"]
+            pedidoswithdocs.append(pedidoJson)
+
+    return JsonResponse(pedidoswithdocs, safe=False) #assim eu devo tomar cuidado com os dados que sao enviados nesse response porque o safe esta falso
