@@ -8,6 +8,21 @@ Os locais de impressão neste caso são os agentes.
 Os agentes acedem os documentos e podem fazer o download dos mesmos ou imprimir utilizando o proprio navegador.
 NOTA: PARA OS AGENTES, RECOMENDA-SE QUE UTILIZEM O NAVEGAR FIREFOX
 
+CAPTURAS DE TELA
+==============================
+* Página Inicial
+![Screenshot from 2023-12-15 14-23-55](https://github.com/magiccode4Dim/autoprint/assets/128492329/09535651-9dba-429a-bc6f-e085f26f75cf)
+* Fazer upload de documentos
+![Screenshot from 2023-12-15 14-24-21](https://github.com/magiccode4Dim/autoprint/assets/128492329/45dc123e-1a55-4162-8646-8a22d37b00ad)
+* Documentos carregados
+![Screenshot from 2023-12-15 14-29-22](https://github.com/magiccode4Dim/autoprint/assets/128492329/bb015881-5f84-472c-88fc-23b340a2f7eb)
+* Fazer pedido de impressão
+![Screenshot from 2023-12-15 14-29-50](https://github.com/magiccode4Dim/autoprint/assets/128492329/eaf89ee5-6494-4f27-bf5c-15aa90ddcf3a)
+* O agente confirmando o pedido apartir do CCC
+![Screenshot from 2023-12-15 14-25-13](https://github.com/magiccode4Dim/autoprint/assets/128492329/0234f696-3d3f-4b30-b9a8-3e034ea6dda2)
+* O agente acedendo o documento
+![Screenshot from 2023-12-15 14-26-14](https://github.com/magiccode4Dim/autoprint/assets/128492329/7adc3372-41b4-4a9a-bd56-89122571542b)
+
 #SOBRE O APLICAÇÃO
 ===============================================================================================
 O projecto foi desenvolvida em Django e, deve utilizar uma base de dados relacional MYSQL ou POSTGRES (recomendo).
@@ -41,21 +56,6 @@ Em seguida corra os comando:
     * python3 manage.py migrate (inicializar a base de dados)
     * python3 manage.py runserver (inicializar o servidor)
     Se tudo estiver bem, o servidor estará acessivel em http://localhost:8000
-
-CAPTURAS DE TELA
-==============================
-* Página Inicial
-![Screenshot from 2023-12-15 14-23-55](https://github.com/magiccode4Dim/autoprint/assets/128492329/09535651-9dba-429a-bc6f-e085f26f75cf)
-* Fazer upload de documentos
-![Screenshot from 2023-12-15 14-24-21](https://github.com/magiccode4Dim/autoprint/assets/128492329/45dc123e-1a55-4162-8646-8a22d37b00ad)
-* Documentos carregados
-![Screenshot from 2023-12-15 14-29-22](https://github.com/magiccode4Dim/autoprint/assets/128492329/bb015881-5f84-472c-88fc-23b340a2f7eb)
-* Fazer pedido de impressão
-![Screenshot from 2023-12-15 14-29-50](https://github.com/magiccode4Dim/autoprint/assets/128492329/eaf89ee5-6494-4f27-bf5c-15aa90ddcf3a)
-* O agente confirmando o pedido apartir do CCC
-![Screenshot from 2023-12-15 14-25-13](https://github.com/magiccode4Dim/autoprint/assets/128492329/0234f696-3d3f-4b30-b9a8-3e034ea6dda2)
-* O agente acedendo o documento
-![Screenshot from 2023-12-15 14-26-14](https://github.com/magiccode4Dim/autoprint/assets/128492329/7adc3372-41b4-4a9a-bd56-89122571542b)
 
     
     
