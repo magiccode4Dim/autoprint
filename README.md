@@ -45,7 +45,7 @@ CAPTURAS DE TELA
 ![Screenshot from 2023-12-15 14-23-55](https://github.com/magiccode4Dim/autoprint/assets/128492329/09535651-9dba-429a-bc6f-e085f26f75cf)
 * Fazer upload de documentos
 ![Screenshot from 2023-12-15 14-24-21](https://github.com/magiccode4Dim/autoprint/assets/128492329/45dc123e-1a55-4162-8646-8a22d37b00ad)
-*Documentos carregados
+* Documentos carregados
 ![Screenshot from 2023-12-15 14-29-22](https://github.com/magiccode4Dim/autoprint/assets/128492329/bb015881-5f84-472c-88fc-23b340a2f7eb)
 * Fazer pedido de impressão
 ![Screenshot from 2023-12-15 14-29-50](https://github.com/magiccode4Dim/autoprint/assets/128492329/eaf89ee5-6494-4f27-bf5c-15aa90ddcf3a)
