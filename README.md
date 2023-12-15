@@ -52,7 +52,7 @@ Em seguida corra os comando:
    
  4. Instalar as dependencias do Django, migrar a base de dados e iniciar o servidor
     -->> Navegue até Autoprint/ e digite
-    * pip install -r requirements.txt* para instalar as dependêcias
+    * pip install -r requirements.txt para instalar as dependêcias
     * python3 manage.py createsuperuser (Crie um superusuario)
     * python3 manage.py makemigrations (Fazer as migrações)
     * python3 manage.py migrate (inicializar a base de dados)
