@@ -45,7 +45,7 @@ No directorio Autoprint_Agente/static/pdfjs, execute:
 npm install
 npm install es-module-shims
 ```
-2. Instale o container de base de dados com Suporte a Postgres Replication (Opcional)
+3. Instale o container de base de dados com Suporte a Postgres Replication (Opcional)
 No directorio Raiz do projecto digite *cd DatabaseImage/*
 Em seguida corra os comando:
 * sudo docker volume create autoprintvolume
