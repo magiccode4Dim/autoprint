@@ -32,13 +32,19 @@ Foi desenvolvido como uma iniciativa para eliminar a necessidade de envio de doc
 ==============================================================================================
 * Python >= 3.8 (Estou usando 3.10.12);
 * Mysql ou Postgres (É só depois substituir as credências de base de dados de acordo com o caso)
-* Docker ( É Opcional mas, é necessário caso queria fazer com que a base de dados seja um container) 
+* Docker ( É Opcional mas, é necessário caso queria fazer com que a base de dados seja um container)
+* Node Js >= 20.16.0
 
 #COMO INSTALAR?
 ===============================================================================================
 1. Baixe o projecto
    *git clone https://github.com/magiccode4Dim/autoprint.git*
-   
+2. Instale os pacotes do node.
+No directorio Autoprint_Agente/static/pdfjs, execute:
+```bash
+npm install
+npm install es-module-shims
+```
 2. Instale o container de base de dados com Suporte a Postgres Replication (Opcional)
 No directorio Raiz do projecto digite *cd DatabaseImage/*
 Em seguida corra os comando:
